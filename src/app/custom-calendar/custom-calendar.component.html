@@ -1,0 +1,34 @@
+<div class="calendar">
+  <div>
+      <div>
+        <button (click)="goToPreviousMonth()"><</button>
+        <button (click)="goToNextMonth()">></button>
+        <button (click)="goToToday()">Today</button>
+      </div>
+      <div>{{headerLabel}}</div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let weekday of weekdays">{{ weekday }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of calendar">
+        <td 
+        *ngFor="let day of week" (click)="showEvents(day)"
+        [class.td_today]="day.isToday"
+        [class.td_selected]="day.id === idDateSelect"
+        >
+          <div 
+            [ngClass]="day.isCurrentMonth ? 'day-text' : 'day-text-blur'">{{ day.date }}</div>
+          <div 
+              class="event-text" 
+              *ngFor="let event of day.events">
+            {{event}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

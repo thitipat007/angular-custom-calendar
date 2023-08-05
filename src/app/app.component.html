@@ -1,0 +1,4 @@
+<h1 style="text-align: center;">Hello calendar</h1>
+<app-custom-calendar #calenderCustom [events]="eventCustomCalendar" (onSelect)="onDateSelect($event)"></app-custom-calendar>
+<button (click)="setUnSelectedDate()">reset</button>
+<router-outlet></router-outlet>
